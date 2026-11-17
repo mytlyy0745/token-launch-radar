@@ -441,7 +441,7 @@
         el('div', { class: 'total' }, el('span', { text: 'Implied value' }), el('b', { class: 'num', text: fmtUsd(row.implied_value_usd) }))
       ),
       el('p', { class: 'note', text: 'Model ' + DATA.model_version + ': the page recomputes this row as ' + fmtUsd(recomputed) + (recomputed === row.implied_value_usd ? ', the same number board.json carries.' : ', which differs from the board: the data would be stale.') + ' This is an estimate, not a price.' }),
-      el('p', { class: 'note', text: comp ? ('Its category, ' + comp.category + ', calibrates on ' + comp.n + ' live-token protocol' + (comp.n === 1 ? '' : 's') + ' at a median FDV/TVL of ' + fmtMult(comp.median) + ', giving the multiple ' + fmtMult(comp.multiple) + '.') : ('Its category has no live-token comparable in this snapshot, so it takes the global median multiple of ' + fmtMult(DATA.global_multiple) + '.') })
+      el('p', { class: 'note', text: comp ? ('Its category, ' + comp.category + ', calibrates on ' + comp.n + ' live-token protocol' + (comp.n === 1 ? '' : 's') + ' at a median FDV/TVL of ' + fmtMult(comp.median) + ', giving the multiple ' + fmtMult(comp.multiple) + '.') : ('Its category has fewer than 2 live-token comparables in this snapshot, so it takes the global median multiple of ' + fmtMult(DATA.global_multiple) + '.') })
     ));
     dialog.appendChild(el('section', { class: 'detail-section' },
       el('h3', { text: 'Farm plan' }),
